@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sai Vineeth | Personal Site",
+  title: "Sai Vinith | Personal Site",
   description: "Projects, experiments, and things I am building.",
 };
 
