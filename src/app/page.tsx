@@ -14,6 +14,10 @@ const projectStack = [
   "PostgreSQL",
   "FastAPI",
   "Docker",
+  "Ollama",
+  "Embeddings",
+  "Semantic Retrieval",
+  "RAG",
 ];
 
 type StarTone = "white" | "blue" | "violet" | "mint";
@@ -133,7 +137,7 @@ export default function Home() {
           </a>
 
           <div className="nav-links">
-            <a href="#projects">Projects</a>
+            <a href="#mindvault">MindVault</a>
             <a href="#connect">Connect</a>
 
             <a
@@ -157,13 +161,13 @@ export default function Home() {
 
             <p className="hero-description">
               I’m a Software Engineer at Amazon, working on backend services and
-              reliability at scale. Outside of work, I build projects, explore AI, and
-              keep learning more about distributed systems.
+              reliability at scale. Outside of work, I build projects, explore AI,
+              and keep learning more about distributed systems.
             </p>
 
             <div className="hero-actions">
-              <a className="primary-action" href="#projects">
-                Explore projects <span>↓</span>
+              <a className="primary-action" href="#mindvault">
+                Explore MindVault <span>↓</span>
               </a>
 
               <a
@@ -185,10 +189,7 @@ export default function Home() {
 
             <div className="identity-header">
               <span>PROFILE</span>
-              <span className="live-status">
-                <i />
-                online
-              </span>
+              <span>PERSONAL SITE</span>
             </div>
 
             <div className="portrait-shell">
@@ -211,10 +212,10 @@ export default function Home() {
           </aside>
         </section>
 
-        <section id="projects" className="section projects-section">
+        <section id="mindvault" className="section projects-section">
           <div className="section-heading">
-            <p className="eyebrow">01 / Projects</p>
-            <h2>Selected projects.</h2>
+            <p className="eyebrow">01 / Project</p>
+            <h2>Currently building.</h2>
           </div>
 
           <article className="project-card">
@@ -229,22 +230,29 @@ export default function Home() {
 
             <div className="project-content">
               <div className="project-copy">
-                <h3>EchoNote</h3>
+                <p className="project-tagline">
+                  Remember more. Reflect deeper. Think better.
+                </p>
+
+                <h3>MindVault</h3>
 
                 <p>
-                  A private journal and reflection tool designed around calm
-                  writing, long-term context, and an assistant that joins only
-                  when invited.
+                  A private, context-aware AI companion for journaling and
+                  long-term personal knowledge. MindVault is being built to
+                  remember meaningful moments, surface relevant context, and
+                  support more thoughtful reflection over time.
                 </p>
 
                 <p className="project-subcopy">
-                  The first version focuses on date-indexed notes, durable
-                  conversations, and a foundation for thoughtful AI assistance.
+                  Its AI layer combines embeddings, semantic retrieval, and
+                  retrieval-augmented generation (RAG) so reflections,
+                  summaries, and questions can use relevant past entries and
+                  conversations instead of acting like a generic chatbot.
                 </p>
               </div>
 
               <div className="architecture-card">
-                <p className="architecture-label">v0 architecture</p>
+                <p className="architecture-label">v1 architecture</p>
 
                 <div className="architecture-row">
                   <span>Next.js</span>
@@ -255,9 +263,11 @@ export default function Home() {
                 </div>
 
                 <div className="architecture-row architecture-secondary">
-                  <span>FastAPI AI service</span>
+                  <span>FastAPI + Ollama</span>
                   <b>→</b>
-                  <span>Summaries + context</span>
+                  <span>Embeddings + retrieval</span>
+                  <b>→</b>
+                  <span>Grounded RAG responses</span>
                 </div>
               </div>
             </div>
@@ -269,7 +279,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <span className="project-update">More soon</span>
+              <span className="project-update">Building v1</span>
             </div>
           </article>
         </section>

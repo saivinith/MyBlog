@@ -502,6 +502,14 @@ h3 {
   line-height: 1.75;
 }
 
+.project-tagline {
+  margin-bottom: 12px;
+  color: var(--cyan);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
 .project-copy .project-subcopy {
   margin-bottom: 0;
   color: var(--muted);
