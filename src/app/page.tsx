@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import ExperienceYears from "../components/ExperienceYears";
 
 const links = {
   github: "https://github.com/saivinith",
@@ -7,18 +8,82 @@ const links = {
   email:
     "mailto:saivinithyellapragada@gmail.com?subject=Hello%20from%20your%20website",
   mindvaultRepo: "https://github.com/saivinith/mindvault",
+  freshMartRepo: "https://github.com/saivinith/FreshMart",
+  shortestPathRepo:
+    "https://github.com/saivinith/Shortest-path-Using-Image-Processing1",
 };
 
-const projectStack = [
+const experience = [
+  {
+    company: "Amazon",
+    role: "Software Development Engineer",
+    area: "Groceries & Retail",
+    period: "Aug 2023 — Present",
+    description:
+      "Building backend services for inventory, fulfillment, reliability, and regional expansion workflows across groceries and retail.",
+    technologies: ["Java", "Kotlin", "AWS", "Spring Boot"],
+    current: true,
+  },
+  {
+    company: "Tata Consultancy Services",
+    role: "Software Developer",
+    area: null,
+    period: "Oct 2018 — Dec 2020",
+    description:
+      "Built and supported enterprise applications, backend APIs, and database-driven workflows before moving into large-scale product engineering.",
+    technologies: ["Java", "Spring Boot", "SQL", "Git"],
+    current: false,
+  },
+];
+
+const mindvaultStack = [
   "Next.js",
   "Spring Boot",
   "PostgreSQL",
   "pgvector",
   "FastAPI",
   "Ollama",
-  "JWT Auth",
+  "JWT",
   "Docker",
-  "RAG",
+];
+
+const mindvaultHighlights = [
+  {
+    title: "Authenticated workspaces",
+    description:
+      "Write, Reflect, and Library are protected by real accounts with per-user data isolation.",
+  },
+  {
+    title: "Reviewable memory",
+    description:
+      "Entries remain authoritative while extracted memories can be reviewed before retrieval.",
+  },
+  {
+    title: "Grounded reflection",
+    description:
+      "Semantic retrieval provides source memories for streamed, context-aware responses.",
+  },
+];
+
+const publicProjects = [
+  {
+    index: "02",
+    title: "FreshMart",
+    type: "Full-stack application",
+    description:
+      "An online grocery application with sign-up, login, product browsing, cart management, and order placement.",
+    stack: ["React", "Python", "MongoDB"],
+    href: links.freshMartRepo,
+  },
+  {
+    index: "03",
+    title: "Shortest Path via Image Processing",
+    type: "Algorithm project",
+    description:
+      "A Python project that identifies objects in images, compares similar objects, and explores shortest paths between visual or geographic inputs.",
+    stack: ["Python", "Image Processing", "Pathfinding"],
+    href: links.shortestPathRepo,
+  },
 ];
 
 type StarTone = "white" | "blue" | "violet" | "mint";
@@ -51,11 +116,9 @@ function createSeededRandom(seed: number) {
 
   return () => {
     value += 0x6d2b79f5;
-
     let temp = value;
     temp = Math.imul(temp ^ (temp >>> 15), temp | 1);
     temp ^= temp + Math.imul(temp ^ (temp >>> 7), temp | 61);
-
     return ((temp ^ (temp >>> 14)) >>> 0) / 4294967296;
   };
 }
@@ -66,8 +129,7 @@ function createStars(count: number): Star[] {
 
   return Array.from({ length: count }, (_, index) => {
     const depthRoll = random();
-    const bright = random() > 0.88;
-
+    const bright = random() > 0.9;
     const depth: StarDepth =
       depthRoll < 0.5 ? "far" : depthRoll < 0.82 ? "mid" : "near";
 
@@ -75,12 +137,12 @@ function createStars(count: number): Star[] {
       id: index,
       x: random() * 100,
       y: random() * 100,
-      size: bright ? 1.6 + random() * 2.2 : 0.7 + random() * 1.6,
-      opacity: bright ? 0.72 + random() * 0.28 : 0.35 + random() * 0.55,
-      duration: 18 + random() * 30,
-      delay: random() * 45,
-      driftX: -18 + random() * 36,
-      driftY: -12 + random() * 24,
+      size: bright ? 1.6 + random() * 1.8 : 0.7 + random() * 1.4,
+      opacity: bright ? 0.74 + random() * 0.24 : 0.3 + random() * 0.5,
+      duration: 12 + random() * 18,
+      delay: random() * 28,
+      driftX: -24 + random() * 48,
+      driftY: -16 + random() * 32,
       tone: tones[Math.floor(random() * tones.length)],
       depth,
       bright,
@@ -88,7 +150,7 @@ function createStars(count: number): Star[] {
   });
 }
 
-const stars = createStars(520);
+const stars = createStars(400);
 
 function Starfield() {
   return (
@@ -131,14 +193,15 @@ export default function Home() {
       <Starfield />
 
       <main className="page">
-        <nav className="nav">
+        <nav className="nav" aria-label="Main navigation">
           <a className="brand" href="#top" aria-label="Go to homepage">
             <span className="brand-orb" />
             <span>sai.v</span>
           </a>
 
           <div className="nav-links">
-            <a href="#mindvault">MindVault</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
             <a href="#connect">Connect</a>
 
             <a
@@ -154,6 +217,7 @@ export default function Home() {
 
         <section id="top" className="hero">
           <div className="hero-copy">
+
             <h1>
               Hi, I’m Vinith.
               <br />
@@ -161,23 +225,19 @@ export default function Home() {
             </h1>
 
             <p className="hero-description">
-              I’m a Software Engineer at Amazon, working on backend services and
-              reliability at scale. Outside of work, I build projects, explore AI,
-              and keep learning more about distributed systems.
+              I’m a software engineer with <ExperienceYears />+ years of
+              experience building backend systems. Away from the screen, I
+              enjoy hiking, staying active, and exploring the Pacific
+              Northwest.
             </p>
 
             <div className="hero-actions">
-              <a className="primary-action" href="#mindvault">
-                Explore MindVault <span>↓</span>
+              <a className="primary-action" href="#projects">
+                Explore Projects <span>↓</span>
               </a>
 
-              <a
-                className="secondary-action"
-                href={links.linkedin}
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn ↗
+              <a className="secondary-action" href="#experience">
+                View experience
               </a>
             </div>
           </div>
@@ -190,7 +250,6 @@ export default function Home() {
 
             <div className="identity-header">
               <span>PROFILE</span>
-              <span>PERSONAL SITE</span>
             </div>
 
             <div className="portrait-shell">
@@ -213,31 +272,64 @@ export default function Home() {
           </aside>
         </section>
 
-        <section id="mindvault" className="section projects-section">
+        <section id="experience" className="section section-bordered">
           <div className="section-heading">
-            <p className="eyebrow">01 / Project</p>
-            <h2>Currently building.</h2>
+            <p className="eyebrow">01 / Experience</p>
+            <h2>Professional experience.</h2>
           </div>
 
-          <article className="project-card">
+          <div className="experience-list">
+            {experience.map((item) => (
+              <article className="experience-row" key={item.company}>
+                <div className="experience-period">
+                  <span>{item.period}</span>
+                  {item.current ? <i>Current</i> : null}
+                </div>
+
+                <div className="experience-main">
+                  <p className="experience-company">{item.company}</p>
+                  <h3>{item.role}</h3>
+                  {item.area ? (
+                    <p className="experience-area">{item.area}</p>
+                  ) : null}
+                  <p className="experience-description">{item.description}</p>
+
+                  <div className="tech-list">
+                    {item.technologies.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="projects" className="section section-bordered">
+          <div className="section-heading">
+            <p className="eyebrow">02 / Projects</p>
+            <h2>A personal memory system, not another chatbot.</h2>
+          </div>
+
+          <article className="project-card project-card-featured">
             <div className="project-topbar">
               <span className="project-id">PROJECT_01</span>
 
-              <span className="project-topbar-right">
+              <div className="project-topbar-right">
                 <a
                   className="project-repo-link"
                   href={links.mindvaultRepo}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Repo ↗
+                  Repository ↗
                 </a>
 
                 <span className="project-status">
                   <i />
-                  v1 complete
+                  Active build
                 </span>
-              </span>
+              </div>
             </div>
 
             <div className="project-content">
@@ -250,23 +342,30 @@ export default function Home() {
 
                 <p>
                   A private, local-first AI companion for journaling and
-                  long-term personal memory. Today, Write, Reflect, and
-                  Library workspaces sit behind real accounts — JWT auth,
-                  per-user data isolation, and a one-click demo login — so
-                  it already feels like a product, not a prototype.
+                  long-term personal memory. Authenticated Write, Reflect, and
+                  Library workspaces form a working end-to-end product loop.
                 </p>
 
                 <p className="project-subcopy">
-                  Entries stay the authoritative source of truth; Ollama
-                  extracts traceable memories from them, pgvector powers
-                  semantic retrieval over the confirmed ones, and Reflect
-                  streams a grounded answer with the exact source memories
-                  cited — instead of acting like a generic chatbot.
+                  Entries remain the source of truth. Reviewable memories and
+                  semantic retrieval provide grounded context for streamed
+                  reflections.
                 </p>
+
+                <div className="project-actions">
+                  <a
+                    className="primary-action"
+                    href={links.mindvaultRepo}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Inspect the repository ↗
+                  </a>
+                </div>
               </div>
 
               <div className="architecture-card">
-                <p className="architecture-label">v1 architecture</p>
+                <p className="architecture-label">Current architecture</p>
 
                 <div className="architecture-row">
                   <span>Next.js</span>
@@ -279,45 +378,91 @@ export default function Home() {
                 <div className="architecture-row architecture-secondary">
                   <span>FastAPI + Ollama</span>
                   <b>→</b>
-                  <span>Embeddings + retrieval</span>
+                  <span>pgvector retrieval</span>
                   <b>→</b>
-                  <span>Grounded RAG responses</span>
+                  <span>Grounded reflection</span>
+                </div>
+
+                <div className="tech-list">
+                  {mindvaultStack.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <div className="project-footer">
-              <div className="tech-list">
-                {projectStack.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-
-              <span className="project-update">Core loop live</span>
+            <div className="mindvault-highlights">
+              {mindvaultHighlights.map((highlight, index) => (
+                <div className="highlight-card" key={highlight.title}>
+                  <span>0{index + 1}</span>
+                  <h4>{highlight.title}</h4>
+                  <p>{highlight.description}</p>
+                </div>
+              ))}
             </div>
           </article>
+
+          <div className="project-archive-heading">
+            <div>
+              <p className="eyebrow">Earlier projects</p>
+              <h3>Other public work.</h3>
+            </div>
+
+            <p>
+              Earlier repositories covering full-stack application development
+              and algorithm-focused experiments.
+            </p>
+          </div>
+
+          <div className="public-work-grid">
+            {publicProjects.map((project) => (
+              <a
+                className="public-project-card"
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                key={project.title}
+              >
+                <div className="public-project-header">
+                  <span>{project.index}</span>
+                  <span>{project.type}</span>
+                </div>
+
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+
+                <div className="tech-list">
+                  {project.stack.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+
+                <strong>Open repository ↗</strong>
+              </a>
+            ))}
+          </div>
         </section>
 
-        <section id="connect" className="section connect-section">
+        <section id="connect" className="section section-bordered">
           <div className="section-heading">
-            <p className="eyebrow">02 / Connect</p>
+            <p className="eyebrow">03 / Connect</p>
             <h2>Elsewhere on the internet.</h2>
           </div>
 
           <div className="connect-grid">
             <a href={links.github} target="_blank" rel="noreferrer">
-              <span>GitHub</span>
-              <strong>↗</strong>
+              <span>Public code and projects</span>
+              <strong>GitHub ↗</strong>
             </a>
 
             <a href={links.linkedin} target="_blank" rel="noreferrer">
-              <span>LinkedIn</span>
-              <strong>↗</strong>
+              <span>Professional experience</span>
+              <strong>LinkedIn ↗</strong>
             </a>
 
             <a href={links.email}>
-              <span>Email</span>
-              <strong>↗</strong>
+              <span>Start a conversation</span>
+              <strong>Email ↗</strong>
             </a>
           </div>
         </section>
