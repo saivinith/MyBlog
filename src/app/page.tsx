@@ -6,17 +6,18 @@ const links = {
   linkedin: "https://www.linkedin.com/in/saivinith",
   email:
     "mailto:saivinithyellapragada@gmail.com?subject=Hello%20from%20your%20website",
+  mindvaultRepo: "https://github.com/saivinith/mindvault",
 };
 
 const projectStack = [
   "Next.js",
   "Spring Boot",
   "PostgreSQL",
+  "pgvector",
   "FastAPI",
-  "Docker",
   "Ollama",
-  "Embeddings",
-  "Semantic Retrieval",
+  "JWT Auth",
+  "Docker",
   "RAG",
 ];
 
@@ -222,9 +223,20 @@ export default function Home() {
             <div className="project-topbar">
               <span className="project-id">PROJECT_01</span>
 
-              <span className="project-status">
-                <i />
-                in progress
+              <span className="project-topbar-right">
+                <a
+                  className="project-repo-link"
+                  href={links.mindvaultRepo}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Repo ↗
+                </a>
+
+                <span className="project-status">
+                  <i />
+                  v1 complete
+                </span>
               </span>
             </div>
 
@@ -237,17 +249,19 @@ export default function Home() {
                 <h3>MindVault</h3>
 
                 <p>
-                  A private, context-aware AI companion for journaling and
-                  long-term personal knowledge. MindVault is being built to
-                  remember meaningful moments, surface relevant context, and
-                  support more thoughtful reflection over time.
+                  A private, local-first AI companion for journaling and
+                  long-term personal memory. Today, Write, Reflect, and
+                  Library workspaces sit behind real accounts — JWT auth,
+                  per-user data isolation, and a one-click demo login — so
+                  it already feels like a product, not a prototype.
                 </p>
 
                 <p className="project-subcopy">
-                  Its AI layer combines embeddings, semantic retrieval, and
-                  retrieval-augmented generation (RAG) so reflections,
-                  summaries, and questions can use relevant past entries and
-                  conversations instead of acting like a generic chatbot.
+                  Entries stay the authoritative source of truth; Ollama
+                  extracts traceable memories from them, pgvector powers
+                  semantic retrieval over the confirmed ones, and Reflect
+                  streams a grounded answer with the exact source memories
+                  cited — instead of acting like a generic chatbot.
                 </p>
               </div>
 
@@ -279,7 +293,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <span className="project-update">Building v1</span>
+              <span className="project-update">Core loop live</span>
             </div>
           </article>
         </section>

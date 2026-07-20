@@ -486,6 +486,30 @@ h3 {
   color: var(--mint);
 }
 
+.project-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.project-repo-link {
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: 180ms ease;
+}
+
+.project-repo-link:hover {
+  border-color: rgba(147, 215, 255, 0.58);
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
 .project-content {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
