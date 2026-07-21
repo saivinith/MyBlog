@@ -21,17 +21,47 @@ const experience = [
     period: "Aug 2023 — Present",
     description:
       "Building backend services for inventory, fulfillment, reliability, and regional expansion workflows across groceries and retail.",
-    technologies: ["Java", "Kotlin", "AWS", "Spring Boot"],
+    technologies: ["Java", "Kotlin", "Python", "Spring Boot", "React"],
     current: true,
+  },
+  {
+    company: "Copart",
+    role: "Software Developer Intern",
+    area: "Backend workflows",
+    period: "Feb 2023 — Aug 2023",
+    description:
+      "Designed backend architecture for email-based actionable workflows integrated with payment systems, and built APIs to detect and block spam entities across phone, email, and IP signals.",
+    technologies: ["Spring Boot", "React"],
+    current: false,
+  },
+  {
+    company: "Amazon",
+    role: "Software Developer Intern",
+    area: "Amazon Fresh",
+    period: "May 2022 — Aug 2022",
+    description:
+      "Built an end-to-end application for Amazon Fresh service workflows and improved application latency from 2300ms to 150ms using AWS API Gateway caching techniques.",
+    technologies: ["AWS", "Node.js", "TypeScript", "React", "Java"],
+    current: false,
+  },
+  {
+    company: "Intel",
+    role: "Software Developer Intern",
+    area: "Internal engineering tools",
+    period: "Jan 2022 — May 2022",
+    description:
+      "Built an internal dashboard to track patches and critical issues, and designed an algorithm for assigning code reviewers based on team requirements.",
+    technologies: ["React", "Python", "Flask", "Linux"],
+    current: false,
   },
   {
     company: "Tata Consultancy Services",
     role: "Software Developer",
-    area: null,
+    area: "Enterprise applications",
     period: "Oct 2018 — Dec 2020",
     description:
-      "Built and supported enterprise applications, backend APIs, and database-driven workflows before moving into large-scale product engineering.",
-    technologies: ["Java", "Spring Boot", "SQL", "Git"],
+      "Built and supported enterprise applications, backend APIs, machine-learning workflows, and database-driven systems before moving into large-scale product engineering.",
+    technologies: ["Python", "Flask", "Spring Boot", "React", "Machine Learning"],
     current: false,
   },
 ];
@@ -280,7 +310,10 @@ export default function Home() {
 
           <div className="experience-list">
             {experience.map((item) => (
-              <article className="experience-row" key={item.company}>
+              <article
+                className="experience-row"
+                key={`${item.company}-${item.role}-${item.period}`}
+              >
                 <div className="experience-period">
                   <span>{item.period}</span>
                   {item.current ? <i>Current</i> : null}
